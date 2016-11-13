@@ -1,0 +1,73 @@
+<ion-header>
+	<ion-navbar secondary>
+		<ion-title>Edit Corp Info</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<form #f="ngForm">
+		<ion-list>
+			<h2 padding>Profile Picture</h2>
+		
+				<div class="center"  *ngFor="let r of logoCollection">
+                    <img [src]="r.URL" class="thumb-receipt padding"  style="width:120px;height:120px;border-radius:50%;margin 10px;border:4px solid white;" />
+                    <button (click)="doGetPicture()" secondary>Change profile picture</button>
+				</div>
+			<h2 padding>My Corp</h2>
+			<ion-item>
+				<ion-label floating>Corp Name</ion-label>
+				<ion-input [(ngModel)]="formInit.corp.companyName" name="c_companyName" type="text" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Address</ion-label>
+				<ion-input [(ngModel)]="formInit.corp.address" name="c_address" type="text" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Email</ion-label>
+				<ion-input [(ngModel)]="formInit.corp.email" name="c_email" type="text" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Phone</ion-label>
+				<ion-input [(ngModel)]="formInit.corp.phone" name="c_phone" type="text" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Fax</ion-label>
+				<ion-input [(ngModel)]="formInit.corp.fax" name="c_fax" type="text"></ion-input>
+			</ion-item>
+			<!--<ion-item>
+                <ion-label floating>GST</ion-label>
+                <ion-input [(ngModel)]="formInit.corp.gst" name="c_gst" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>PST</ion-label>
+                <ion-input [(ngModel)]="formInit.corp.pst" name="c_pst" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>HST</ion-label>
+                <ion-input [(ngModel)]="formInit.corp.hst" name="c_hst" type="text"></ion-input>
+            </ion-item>-->
+
+			<h2 padding> Main Contact </h2>
+			<ion-item>
+				<ion-label floating>First Name</ion-label>
+				<ion-input [(ngModel)]="formInit.mainContact.firstName" name="m_firstName" type="text" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Last Name</ion-label>
+				<ion-input [(ngModel)]="formInit.mainContact.lastName" name="m_lastName" type="text" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Email</ion-label>
+				<ion-input [(ngModel)]="formInit.mainContact.email" name="m_email" type="text" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Phone</ion-label>
+				<ion-input [(ngModel)]="formInit.mainContact.phone" name="m_phone" type="text" required></ion-input>
+			</ion-item>
+		</ion-list>
+		<ion-buttons end>
+			<button (click)="update(f.value)" [disabled]="!f.control.valid">Update</button>
+			<button (click)="dismiss()" danger>Cancel</button>
+		</ion-buttons>
+	</form>
+</ion-content>

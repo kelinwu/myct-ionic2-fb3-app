@@ -1,0 +1,63 @@
+<ion-header>
+
+  <ion-navbar secondary>
+    <ion-title>Add New Customer</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form #f="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Customer Name</ion-label>
+        <ion-input [(ngModel)]="formInit.customerName" name="customerName" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Company Name</ion-label>
+        <ion-input [(ngModel)]="formInit.companyName" name="companyName" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Phone</ion-label>
+        <ion-input [(ngModel)]="formInit.phone" name="phone" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Mobile</ion-label>
+        <ion-input [(ngModel)]="formInit.mobile" name="mobile" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input [(ngModel)]="formInit.email" name="email" type="text" required></ion-input>
+      </ion-item>
+
+      <h3 padding>Billing Address</h3>
+
+      <ion-item>
+        <ion-label floating>Address</ion-label>
+        <ion-input [(ngModel)]="formInit.address" name="address" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>City</ion-label>
+        <ion-input [(ngModel)]="formInit.city" name="city" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Province</ion-label>
+        <ion-input [(ngModel)]="formInit.province" name="province" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Postal</ion-label>
+        <ion-input [(ngModel)]="formInit.postal" name="postal" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Country</ion-label>
+        <ion-input [(ngModel)]="formInit.country" name="country" type="text" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-buttons end>
+      <button (click)="add(f.value)" *ngIf="isNew == true" [disabled]="!f.control.valid">Add</button>
+      <button (click)="update(f.value)" *ngIf="isUpdate == true" [disabled]="!f.control.valid">Update</button>
+      <button (click)="dismiss()" danger>Cancel</button>
+       
+    </ion-buttons>
+  </form>
+</ion-content>

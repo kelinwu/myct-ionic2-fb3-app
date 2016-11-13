@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Corp Info
+    </ion-title>
+    <ion-buttons end>
+      <button *ngFor="let item of corpInfo | async" (click)="edit(item)">
+        <ion-icon name="create"></ion-icon> Edit
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content> 
+
+<!--<ion-list secondary>
+  <ion-item class="item-profile" style="background-color:#2ecc71;">
+    <div class="item-avatar_ center"> 
+      <img src="/android_asset/www/images/2144.jpg" style="width:120px;border-radius:50%;margin 10px;border:4px solid white;" >
+    </div>
+  </ion-item>
+</ion-list>-->
+
+<h2 padding>Profile Picture</h2>
+		
+				<div class="center"  *ngFor="let r of logoCollection">
+                    <img [src]="r.URL" class="thumb-receipt padding"  style="width:120px;height:120px;border-radius:50%;margin 10px;border:4px solid white;" />
+				</div>
+
+  <div *ngFor="let item of corpInfo | async">
+    <h2 padding>My Corp 
+      </h2>
+    <ion-item>
+      <ion-label>Corp Name</ion-label>
+      <ion-label>{{item.corp.companyName}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-label>{{item.corp.address}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-label>{{item.corp.email}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Phone</ion-label>
+      <ion-label>{{item.corp.phone}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fax</ion-label>
+      <ion-label>{{item.corp.fax}}</ion-label>
+    </ion-item>
+    <!--<ion-item>
+      <ion-label>Total Tax Rate</ion-label>
+      <ion-label>{{item.corp.tax}}</ion-label>
+    </ion-item>-->
+    <h2 padding> Main Contact </h2>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-label>{{item.mainContact.firstName}} {{item.mainContact.lastName}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-label>{{item.mainContact.email}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Phone</ion-label>
+      <ion-label>{{item.mainContact.phone}}</ion-label>
+    </ion-item>
+
+
+  </div>
+</ion-content>
+
+
+<ion-footer align-title="center" class="bar-assertive">
+  <div *ngFor="let item of corpInfo | async">
+  <button block clear (click)="edit(item)">Edit my account</button></div>
+</ion-footer>

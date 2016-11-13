@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar secondary>
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="form">
+    <h3 padding>Expense Tracker Sign Up!</h3>
+    <p padding>You have 30 days to try our app!</p>
+    <ion-list >
+      <ion-item>
+        <ion-label float>Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label float>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <div class="button-bar" padding>
+      <button type="submit" block [disabled]="!form.valid" (click)="register()" >Create my account</button>
+    </div>
+  </form>
+</ion-content>

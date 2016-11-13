@@ -1,0 +1,72 @@
+<ion-header>
+
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Reports</ion-title>
+    <!--<ion-buttons end>
+      <button (click)="openMenu()">
+        <ion-icon name="ios-options-outline"></ion-icon> filter
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!--<svg class="chart"></svg>-->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col width-50><svg class="pieProfLos"></svg></ion-col>
+      <ion-col width-50><svg class="pieTaxSum"></svg></ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <h2 padding>Profit & Loss (<span class="{{reportData.profitloss.color}}">{{reportData.profitloss.result}}</span>)</h2>
+    <ion-item>
+      <ion-icon name="ios-apps-outline"></ion-icon> Gross Profit
+      <span item-right>{{reportData.profitloss.income}}</span>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ios-apps-outline"></ion-icon> Total Expense
+      <span item-right>{{reportData.profitloss.expense}}</span>
+    </ion-item>
+  </ion-list>
+  
+  <ion-list>
+    <h2 padding>Tax Summary (<span class="{{reportData.profitloss.color}}">{{reportData.taxSummary.result}}</span>)</h2>
+    <ion-item>
+      <ion-icon name="ios-apps-outline"></ion-icon> Sales(billed)
+      <span item-right>{{reportData.taxSummary.salesTax}}</span>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ios-apps-outline"></ion-icon> Expense(less)
+      <span item-right>{{reportData.taxSummary.expenseTax}}</span>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <h2 padding>Expense Summary</h2>
+  <ion-item-sliding *ngFor="let item of reportData.expensesSummary">
+    <ion-item (click)="open(item)">
+      <ion-icon name="ios-apps-outline"></ion-icon> {{item.expenseName}} 
+    <span item-right> <ion-icon name=""></ion-icon> {{item.expenseSubtt}} </span> 
+    </ion-item>
+  </ion-item-sliding>
+  </ion-list>
+
+  <ion-list>
+    <h2 padding>Income Summary</h2>
+  <ion-item-sliding *ngFor="let item of reportData.incomeSummary">
+    <ion-item (click)="open(item)">
+      <ion-icon name="ios-apps-outline"></ion-icon> {{item.clientName}} 
+    <span item-right> <ion-icon name=""></ion-icon> {{item.incomeSubtt}} </span> 
+    </ion-item>
+  </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

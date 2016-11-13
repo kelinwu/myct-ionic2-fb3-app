@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar secondary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Category</ion-title>
+    <ion-buttons end>
+      <button (click)="create()">
+        <ion-icon name="add"></ion-icon> Add
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list>
+  <ion-item-sliding *ngFor="let item of categories | async">
+    <ion-item (click)="open(item)">
+      <ion-icon name="ios-apps-outline"></ion-icon> {{item.name}} 
+    <span item-right> <ion-icon name=""></ion-icon> {{item.code}} </span> 
+    </ion-item>
+
+     <ion-item-options side="right">
+    <button danger (click)="remove(item)"><ion-icon name="trash"></ion-icon>Delete</button>
+  </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+</ion-content>

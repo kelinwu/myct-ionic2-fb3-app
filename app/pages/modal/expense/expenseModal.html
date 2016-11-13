@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-toolbar primary>
+        <ion-title>
+            Expense
+        </ion-title>
+        <ion-buttons end>
+            <button class="button button-positive" (click)="doGetPicture()" end>
+                <ion-icon name="ios-camera-outline"></ion-icon> Photo Receipts</button>
+            <!--<span primary showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>-->
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <form #f="ngForm">
+  
+            <ion-item *ngFor="let r of recieptCollection">
+                <img [src]="r.URL" class="thumb-receipt padding" />
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Category</ion-label>
+                <ion-select [(ngModel)]="formInit.selectedCategory" name="selectedCategory">
+                    <ion-option *ngFor="let category of categories | async" value="{{category.name}}">{{category.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Item</ion-label>
+                <ion-input [(ngModel)]="formInit.item" name="item" type="text" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Reciept Total</ion-label>
+                <ion-input [(ngModel)]="formInit.subtotal" name="subtotal" type="text" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Tax</ion-label>
+                <!--untick will errase total tax-->
+                <!--<ion-checkbox [(ngModel)]="formInit.taxable" name="taxable"></ion-checkbox>-->
+                <!--this will be calc automatically base on initial tax setup under corp page, but its changable when neccessary-->
+                <ion-input [(ngModel)]="formInit.tax" name="tax" type="text"></ion-input>
+               
+            </ion-item>
+            <ion-buttons end>
+                <button (click)="update(f.value)"  *ngIf="isUpdate == true"  [disabled]="!f.control.valid" >Update</button>
+                <button (click)="add(f.value)"  *ngIf="isNew == true" [disabled]="!f.control.valid" >Add</button>
+                <button  (click)="dismiss()" danger>Cancel</button>
+            </ion-buttons>
+        </form>
+        
+    </ion-list>
+</ion-content>

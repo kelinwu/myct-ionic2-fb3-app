@@ -1,0 +1,38 @@
+<ion-content padding class="mctGreen"  style="background-image:url(/android_asset/www/images/2144.jpg)">
+ <ion-row>
+   <ion-col>
+    <div style="width: 100%; height: 36px;" class="spacer"></div>
+    <div class="center"  > 
+      <img src="/android_asset/www/images/MCTLogo.png" style="width:120px;border-radius:50%;margin 10px;border:4px solid white;" >
+      </div>
+   </ion-col>
+  </ion-row>
+  <ion-row>
+   <ion-col>     
+     <div class="center"> 
+       <h3>Expense Tracker Sign In</h3></div>
+   </ion-col> 
+  </ion-row>  
+  <br/><br/>
+
+
+  <form [formGroup]="form">
+    <ion-item class="mctGreen"  style="background-color: transparent;">
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" formControlName="email" style="background-color:transparent;"></ion-input>
+    </ion-item>
+    <ion-item  style="background-color: transparent;">
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <div class="button-bar" padding>
+      <button block class="button" [disabled]="!form.valid" secondary (click)="login()">Login</button>
+    </div>
+
+  </form>
+</ion-content>
+
+<ion-footer align-title="left" class="bar-assertive">
+ <button block clear (click)="goSignUpForm()">Create a new account</button>
+</ion-footer>

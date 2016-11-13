@@ -1,0 +1,25 @@
+<ion-menu [content]="content" secondary>
+
+	<ion-toolbar>
+		<ion-title>
+			Welcome</ion-title>
+	</ion-toolbar>
+
+	<ion-content style="background-image: url(/android_asset/www/images/2144.jpg);">
+		<ion-list style="background-color: transparent;">
+			<div class="center" *ngFor="let l of logoCollection">
+				<img [src]="l.URL" class="thumb-receipt padding" style="width:120px;height:120px;border-radius:50%;margin 10px;border:4px solid white;">
+			</div>
+			<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" style="background-color: transparent;">
+       <ion-icon name="{{p.icon}}"></ion-icon> {{p.title}}
+      </button>
+		</ion-list>
+	</ion-content>
+	<ion-footer secondary>
+		<button menuClose ion-item (click)="logout()" danger>
+       <ion-icon name="ios-log-out-outline"></ion-icon> logout
+      </button>
+	</ion-footer>
+</ion-menu>
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

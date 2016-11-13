@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar secondary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Expense</ion-title>
+    <ion-buttons end>
+      <button danger>
+       <h3> ${{expenseYTDTotal.total}} </h3>
+         <span style="font-size:0.7em"> tax: ${{expenseYTDTotal.tax}} </span></button>
+      <button (click)="presentModal()">
+        <ion-icon name="add"></ion-icon> Add
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of expenses | async">
+      <ion-item (click)="presentModal(item)">
+        <ion-thumbnail item-left>
+          <img src="{{item.receiptDownloadURL}}" class="thumb-receipt" alt="">
+        </ion-thumbnail>
+        <h1>${{item.subtotal}} <span style="font-size:0.5em">tax: ${{item.tax}}</span></h1>
+        <p>
+          <ion-icon name="copy"></ion-icon> {{item.selectedCategory}}</p>
+        <p>
+          <ion-icon name="star"></ion-icon> {{item.item}}</p><p>
+          <ion-icon name="calendar"></ion-icon> {{item.lastUpdated | date: 'MM/dd/yyyy hh:mm'}}
+        </p>
+        <!--<ion-icon name="md-arrow-forward" item-right></ion-icon>-->
+      </ion-item>
+      <!--<ion-item-options side="left">-->
+        <!--<button (click)="favorite(item)">Favorite</button>-->
+        <!--<button default (click)="share(item)">Share</button>-->
+      <!--</ion-item-options>-->
+
+      <ion-item-options side="right">
+        <button danger (click)="remove(item)"><ion-icon name="trash"></ion-icon>Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
